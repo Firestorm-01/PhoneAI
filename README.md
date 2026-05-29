@@ -62,7 +62,6 @@ Every action logged with timestamp locally
 Dangerous actions (power off, SMS) need voice confirmation
 Rate limiting prevents abuse (20 actions/min)
 Spam calls auto-blocked before they ring
-Phoneai dashboardCode · JSX DownloadYou said: How do I run this +  again test the entire codeHow do I run this +  again test the entire code8:27 AMClaude responded: Great questions — two separate things.Great questions — two separate things. Let me tackle both.
 
 🚀 How to Run the Android App
 Step 1 — Prerequisites
