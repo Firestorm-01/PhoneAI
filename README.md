@@ -1,5 +1,5 @@
 # PhoneAI Use Cases
-
+⚠️Entire project needs to be tested before usage.This is a prototype.
 ## 🚗 Driving
 
 - **"Hey Phone, call Mom"** → calls hands-free
