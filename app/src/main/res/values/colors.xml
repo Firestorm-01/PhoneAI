@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- ── Base ── -->
+    <color name="bg_primary">#080A08</color>
+    <color name="bg_surface">#0E110E</color>
+    <color name="bg_card">#111611</color>
+    <color name="bg_terminal">#090C09</color>
+    <color name="bg_call">#071209</color>
+    <color name="bg_warning">#120C05</color>
+
+    <!-- ── Accents ── -->
+    <color name="accent_green">#A3E635</color>
+    <color name="accent_green_dim">#4A6B16</color>
+    <color name="accent_orange">#F97316</color>
+    <color name="accent_red">#EF4444</color>
+    <color name="accent_blue">#38BDF8</color>
+    <color name="accent_yellow">#FCD34D</color>
+
+    <!-- ── Text ── -->
+    <color name="text_primary">#E8F0E8</color>
+    <color name="text_secondary">#5C7A5C</color>
+    <color name="text_hint">#2D3D2D</color>
+    <color name="text_terminal">#6BCB6B</color>
+
+    <!-- ── UI elements ── -->
+    <color name="border">#1A231A</color>
+    <color name="divider">#141C14</color>
+
+    <!-- ── Status colors ── -->
+    <color name="status_online">#4ADE80</color>
+    <color name="status_offline">#EF4444</color>
+    <color name="status_listening">#FCD34D</color>
+</resources>

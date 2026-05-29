@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_primary">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <!-- Back / Title -->
+        <LinearLayout android:layout_width="match_parent" android:layout_height="56dp"
+            android:orientation="horizontal" android:gravity="center_vertical"
+            android:layout_marginBottom="16dp">
+            <ImageButton android:id="@+id/back_button" android:layout_width="48dp"
+                android:layout_height="48dp" android:background="?attr/selectableItemBackgroundBorderless"
+                android:src="@drawable/ic_back" app:tint="@color/text_primary"/>
+            <TextView android:layout_width="0dp" android:layout_height="wrap_content"
+                android:layout_weight="1" android:text="Settings"
+                android:textColor="@color/text_primary" android:textSize="20sp" android:textStyle="bold"
+                android:layout_marginStart="8dp"/>
+        </LinearLayout>
+
+        <!-- API Config -->
+        <TextView style="@style/SectionLabel" android:text="AI CONFIGURATION"/>
+        <com.google.android.material.card.MaterialCardView style="@style/SettingsCard">
+            <LinearLayout style="@style/SettingsCardInner">
+                <TextView style="@style/SettingTitle" android:text="Groq API Key"/>
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent" android:layout_height="wrap_content"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                    app:boxStrokeColor="@color/accent_green" app:hintTextColor="@color/text_secondary">
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/setting_api_key"
+                        android:layout_width="match_parent" android:layout_height="wrap_content"
+                        android:hint="gsk_..." android:inputType="textPassword"
+                        android:textColor="@color/text_primary" android:textSize="13sp"
+                        android:fontFamily="@font/roboto_mono"/>
+                </com.google.android.material.textfield.TextInputLayout>
+                <TextView style="@style/SettingHint" android:text="Get your key at console.groq.com"/>
+
+                <View style="@style/Divider"/>
+
+                <TextView style="@style/SettingTitle" android:text="Wake Word"/>
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent" android:layout_height="wrap_content"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                    app:boxStrokeColor="@color/accent_green" app:hintTextColor="@color/text_secondary">
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/setting_wake_word"
+                        android:layout_width="match_parent" android:layout_height="wrap_content"
+                        android:hint="hey phone" android:inputType="text"
+                        android:textColor="@color/text_primary" android:textSize="14sp"/>
+                </com.google.android.material.textfield.TextInputLayout>
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- Voice -->
+        <TextView style="@style/SectionLabel" android:text="VOICE &amp; TTS"/>
+        <com.google.android.material.card.MaterialCardView style="@style/SettingsCard">
+            <LinearLayout style="@style/SettingsCardInner">
+                <LinearLayout style="@style/SettingRow">
+                    <LinearLayout style="@style/SettingRowText">
+                        <TextView style="@style/SettingTitle" android:text="Text-to-Speech"/>
+                        <TextView style="@style/SettingHint" android:text="Assistant speaks responses aloud"/>
+                    </LinearLayout>
+                    <com.google.android.material.switchmaterial.SwitchMaterial
+                        android:id="@+id/setting_tts_enabled"
+                        android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:checked="true" app:thumbTint="@color/switch_thumb_selector"
+                        app:trackTint="@color/switch_track_selector"/>
+                </LinearLayout>
+                <View style="@style/Divider"/>
+                <TextView style="@style/SettingTitle" android:text="Speech Speed"/>
+                <SeekBar android:id="@+id/setting_tts_speed" android:layout_width="match_parent"
+                    android:layout_height="wrap_content" android:max="100" android:progress="33"
+                    android:layout_marginTop="4dp"/>
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:orientation="horizontal" android:layout_marginTop="2dp">
+                    <TextView style="@style/SettingHint" android:text="Slow" android:layout_width="0dp"
+                        android:layout_weight="1"/>
+                    <TextView style="@style/SettingHint" android:text="Fast" android:gravity="end"/>
+                </LinearLayout>
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- Calls -->
+        <TextView style="@style/SectionLabel" android:text="CALL MANAGEMENT"/>
+        <com.google.android.material.card.MaterialCardView style="@style/SettingsCard">
+            <LinearLayout style="@style/SettingsCardInner">
+                <LinearLayout style="@style/SettingRow">
+                    <LinearLayout style="@style/SettingRowText">
+                        <TextView style="@style/SettingTitle" android:text="Auto-Answer Whitelist"/>
+                        <TextView style="@style/SettingHint" android:text="Auto-answer calls from saved contacts"/>
+                    </LinearLayout>
+                    <com.google.android.material.switchmaterial.SwitchMaterial
+                        android:id="@+id/setting_auto_answer"
+                        android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        app:thumbTint="@color/switch_thumb_selector"
+                        app:trackTint="@color/switch_track_selector"/>
+                </LinearLayout>
+                <View style="@style/Divider"/>
+                <LinearLayout style="@style/SettingRow">
+                    <LinearLayout style="@style/SettingRowText">
+                        <TextView style="@style/SettingTitle" android:text="Spam Blocking"/>
+                        <TextView style="@style/SettingHint" android:text="Auto-decline detected spam calls"/>
+                    </LinearLayout>
+                    <com.google.android.material.switchmaterial.SwitchMaterial
+                        android:id="@+id/setting_spam_block"
+                        android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:checked="true" app:thumbTint="@color/switch_thumb_selector"
+                        app:trackTint="@color/switch_track_selector"/>
+                </LinearLayout>
+                <View style="@style/Divider"/>
+                <LinearLayout style="@style/SettingRow">
+                    <LinearLayout style="@style/SettingRowText">
+                        <TextView style="@style/SettingTitle" android:text="Announce Caller"/>
+                        <TextView style="@style/SettingHint" android:text="Say caller name/number via TTS"/>
+                    </LinearLayout>
+                    <com.google.android.material.switchmaterial.SwitchMaterial
+                        android:id="@+id/setting_announce_caller"
+                        android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:checked="true" app:thumbTint="@color/switch_thumb_selector"
+                        app:trackTint="@color/switch_track_selector"/>
+                </LinearLayout>
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- Safety -->
+        <TextView style="@style/SectionLabel" android:text="SAFETY &amp; SECURITY"/>
+        <com.google.android.material.card.MaterialCardView style="@style/SettingsCard">
+            <LinearLayout style="@style/SettingsCardInner">
+                <LinearLayout style="@style/SettingRow">
+                    <LinearLayout style="@style/SettingRowText">
+                        <TextView style="@style/SettingTitle" android:text="Audit Logging"/>
+                        <TextView style="@style/SettingHint" android:text="Log all executed actions"/>
+                    </LinearLayout>
+                    <com.google.android.material.switchmaterial.SwitchMaterial
+                        android:id="@+id/setting_audit_log"
+                        android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:checked="true" app:thumbTint="@color/switch_thumb_selector"
+                        app:trackTint="@color/switch_track_selector"/>
+                </LinearLayout>
+                <View style="@style/Divider"/>
+                <TextView style="@style/SettingTitle" android:text="Confirmation Timeout"/>
+                <SeekBar android:id="@+id/setting_confirm_timeout" android:layout_width="match_parent"
+                    android:layout_height="wrap_content" android:max="20" android:progress="8"
+                    android:layout_marginTop="4dp"/>
+                <TextView android:id="@+id/confirm_timeout_label" style="@style/SettingHint"
+                    android:text="8 seconds"/>
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- Audit Log -->
+        <TextView style="@style/SectionLabel" android:text="AUDIT LOG"/>
+        <com.google.android.material.card.MaterialCardView style="@style/SettingsCard">
+            <LinearLayout style="@style/SettingsCardInner">
+                <ScrollView android:layout_width="match_parent" android:layout_height="200dp">
+                    <TextView android:id="@+id/audit_log_preview" android:layout_width="match_parent"
+                        android:layout_height="wrap_content" android:textColor="@color/text_terminal"
+                        android:fontFamily="@font/roboto_mono" android:textSize="11sp"
+                        android:lineSpacingMultiplier="1.6" android:text="No entries yet."/>
+                </ScrollView>
+                <Button android:id="@+id/btn_clear_audit" style="@style/MicroButton"
+                    android:text="CLEAR LOG" android:layout_marginTop="8dp"/>
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- Save Button -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/settings_save_button"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="32dp"
+            android:text="SAVE SETTINGS"
+            android:textStyle="bold"
+            app:backgroundTint="@color/accent_green"
+            android:textColor="@color/bg_primary"
+            app:cornerRadius="12dp"/>
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>

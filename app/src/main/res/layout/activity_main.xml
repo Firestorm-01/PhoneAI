@@ -1,0 +1,320 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_primary"
+    android:fitsSystemWindows="true">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/bg_surface"
+        app:elevation="0dp">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:paddingHorizontal="8dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <!-- Logo chip -->
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/logo_chip"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="PHONE AI"
+                    android:textColor="@color/accent_green"
+                    android:textStyle="bold"
+                    android:textSize="13sp"
+                    app:chipBackgroundColor="@color/bg_card"
+                    app:chipStrokeColor="@color/accent_green"
+                    app:chipStrokeWidth="1dp" />
+
+                <View android:layout_width="0dp" android:layout_height="0dp" android:layout_weight="1"/>
+
+                <!-- Status dot -->
+                <View
+                    android:id="@+id/status_dot"
+                    android:layout_width="10dp"
+                    android:layout_height="10dp"
+                    android:layout_marginEnd="8dp"
+                    android:background="@drawable/status_dot" />
+
+                <TextView
+                    android:id="@+id/status_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="OFFLINE"
+                    android:textColor="@color/text_secondary"
+                    android:textSize="11sp"
+                    android:fontFamily="@font/roboto_mono"
+                    android:layout_marginEnd="12dp"/>
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/settings_button"
+                    style="@style/Widget.Material3.Button.IconButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:icon="@drawable/ic_settings"
+                    app:iconTint="@color/text_secondary" />
+            </LinearLayout>
+        </androidx.appcompat.widget.Toolbar>
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <!-- Permissions Warning Card -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/permissions_card"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:visibility="gone"
+                app:cardBackgroundColor="@color/bg_warning"
+                app:cardCornerRadius="12dp"
+                app:strokeColor="@color/accent_orange"
+                app:strokeWidth="1dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="⚠ Setup Required"
+                        android:textColor="@color/accent_orange"
+                        android:textStyle="bold"
+                        android:textSize="14sp"
+                        android:layout_marginBottom="8dp"/>
+
+                    <Button
+                        android:id="@+id/accessibility_button"
+                        android:layout_width="match_parent"
+                        android:layout_height="48dp"
+                        android:text="Enable Accessibility Service"
+                        android:layout_marginBottom="8dp"
+                        style="@style/OutlineButtonOrange"/>
+
+                    <Button
+                        android:id="@+id/overlay_button"
+                        android:layout_width="match_parent"
+                        android:layout_height="48dp"
+                        android:text="Grant Overlay Permission"
+                        android:layout_marginBottom="8dp"
+                        style="@style/OutlineButtonOrange"/>
+
+                    <Button
+                        android:id="@+id/admin_button"
+                        android:layout_width="match_parent"
+                        android:layout_height="48dp"
+                        android:text="Activate Device Admin"
+                        style="@style/OutlineButtonOrange"/>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Active Call Card -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/call_card"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:visibility="gone"
+                app:cardBackgroundColor="@color/bg_call"
+                app:cardCornerRadius="12dp"
+                app:strokeColor="@color/accent_green"
+                app:strokeWidth="1dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        android:layout_marginBottom="12dp">
+
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                            android:text="📞" android:textSize="24sp" android:layout_marginEnd="12dp"/>
+
+                        <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content"
+                            android:layout_weight="1" android:orientation="vertical">
+                            <TextView android:id="@+id/call_state_text" android:layout_width="wrap_content"
+                                android:layout_height="wrap_content" android:text="Active Call"
+                                android:textColor="@color/accent_green" android:textStyle="bold" android:textSize="15sp"/>
+                            <TextView android:id="@+id/call_number_text" android:layout_width="wrap_content"
+                                android:layout_height="wrap_content" android:text="Unknown"
+                                android:textColor="@color/text_secondary" android:textSize="12sp"/>
+                        </LinearLayout>
+
+                        <TextView android:id="@+id/call_timer_text"
+                            android:layout_width="wrap_content" android:layout_height="wrap_content"
+                            android:text="00:00" android:textColor="@color/accent_green"
+                            android:fontFamily="@font/roboto_mono" android:textSize="16sp"/>
+                    </LinearLayout>
+
+                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                        android:orientation="horizontal" android:gravity="center">
+                        <Button android:id="@+id/btn_mute_call" style="@style/CallButton"
+                            android:text="Mute" android:layout_marginEnd="8dp"/>
+                        <Button android:id="@+id/btn_speaker" style="@style/CallButton"
+                            android:text="Speaker" android:layout_marginEnd="8dp"/>
+                        <Button android:id="@+id/btn_hold" style="@style/CallButton"
+                            android:text="Hold" android:layout_marginEnd="8dp"/>
+                        <Button android:id="@+id/btn_end_call" style="@style/CallButtonRed"
+                            android:text="End Call"/>
+                    </LinearLayout>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Command Input Card -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                app:cardBackgroundColor="@color/bg_card"
+                app:cardCornerRadius="12dp"
+                app:strokeColor="@color/border"
+                app:strokeWidth="1dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:text="COMMAND" android:textColor="@color/text_secondary"
+                        android:textSize="10sp" android:letterSpacing="0.15"
+                        android:fontFamily="@font/roboto_mono" android:layout_marginBottom="8dp"/>
+
+                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                        android:orientation="horizontal" android:gravity="center_vertical">
+
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                            android:text="🎤" android:textSize="20sp" android:layout_marginEnd="10dp"/>
+
+                        <EditText
+                            android:id="@+id/command_input"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:hint="say or type a command..."
+                            android:textColorHint="@color/text_hint"
+                            android:textColor="@color/text_primary"
+                            android:background="@null"
+                            android:imeOptions="actionSend"
+                            android:inputType="text"
+                            android:textSize="14sp"/>
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/send_button"
+                            android:layout_width="wrap_content"
+                            android:layout_height="42dp"
+                            android:text="Send"
+                            android:paddingHorizontal="16dp"
+                            app:backgroundTint="@color/accent_green"
+                            android:textColor="@color/bg_primary"
+                            android:textStyle="bold"/>
+                    </LinearLayout>
+
+                    <!-- Voice recording waveform placeholder -->
+                    <View android:id="@+id/waveform_view" android:layout_width="match_parent"
+                        android:layout_height="2dp" android:background="@color/border"
+                        android:layout_marginTop="12dp"/>
+
+                    <!-- Processing indicator -->
+                    <com.google.android.material.progressindicator.LinearProgressIndicator
+                        android:id="@+id/processing_indicator"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:visibility="gone"
+                        app:indicatorColor="@color/accent_green"
+                        app:trackColor="@color/border"/>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Status/Terminal Card -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                app:cardBackgroundColor="@color/bg_terminal"
+                app:cardCornerRadius="12dp"
+                app:strokeColor="@color/border"
+                app:strokeWidth="1dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                        android:orientation="horizontal" android:gravity="center_vertical"
+                        android:layout_marginBottom="8dp">
+                        <TextView android:layout_width="0dp" android:layout_height="wrap_content"
+                            android:layout_weight="1" android:text="ASSISTANT LOG"
+                            android:textColor="@color/accent_green" android:textSize="10sp"
+                            android:fontFamily="@font/roboto_mono" android:letterSpacing="0.15"/>
+                        <Button android:id="@+id/clear_log_button" style="@style/MicroButton" android:text="CLEAR"/>
+                    </LinearLayout>
+
+                    <ScrollView
+                        android:id="@+id/log_scroll"
+                        android:layout_width="match_parent"
+                        android:layout_height="180dp">
+                        <TextView
+                            android:id="@+id/status_text"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/roboto_mono"
+                            android:textColor="@color/text_terminal"
+                            android:textSize="11sp"
+                            android:lineSpacingMultiplier="1.5"
+                            android:text="▶ PhoneAI ready. Say 'Hey Phone' to start.\n"/>
+                    </ScrollView>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Start/Stop button -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/start_stop_button"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:text="START ASSISTANT"
+                android:textStyle="bold"
+                android:textSize="14sp"
+                app:backgroundTint="@color/accent_green"
+                android:textColor="@color/bg_primary"
+                app:cornerRadius="12dp"/>
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
